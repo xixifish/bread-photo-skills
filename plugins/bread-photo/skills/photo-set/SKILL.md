@@ -11,9 +11,9 @@ For one bread, write the prompts for four matching photos:
 | Photo | Background | File name |
 |---|---|---|
 | Whole bread | café table by a window | `<bread>-whole.png` |
-| Whole bread | none (transparent) | `<bread>-whole-cutout.png` |
+| Whole bread | plain white | `<bread>-whole-white.png` |
 | Cross-section | the same café table | `<bread>-cross-section.png` |
-| Cross-section | none (transparent) | `<bread>-cross-section-cutout.png` |
+| Cross-section | plain white | `<bread>-cross-section-white.png` |
 
 All four must show the **same loaf**, so the user makes them in **one Gemini chat**, each photo an edit of an earlier one.
 
@@ -83,7 +83,7 @@ If the user's photo shows much more than the cut face, tell them to crop it to t
 
 **Exception: a whole photo can work better when the reference bread has the same simple shape as the user's.** For shokupan, an uncropped photo (a cut loaf and slices of the same kind of tin loaf, lit from the side) gave a softer, more natural cut surface than a cropped flat slice seen from above. A tin loaf's slices are plain rectangles, so there was no unusual outline for Gemini to copy, and the side light gave the crumb depth. If a cropped photo gives a flat-looking cut surface, suggest trying the whole photo instead.
 
-**Match the cut and the recipe, too.** For breads with layers, spirals or fillings, the crumb photo should be cut the same way step 2 cuts the bread: for rolls, a roll standing upright, cut straight down through the center, seen from the front. It should also contain only what the bread contains, with no icing, nuts, zest or other extras the user's bread doesn't have. Crop off toppings the bread does have too (sesame, seeds, sugar): Gemini copies their pattern and position from the photo. In testing, a strip of sesame along the reference anpan's crust appeared on both cut halves. In testing, a blurry photo of a tipped-over cinnamon roll gave holes that were too large and a stringy texture. A sharp photo of an upright roll, cut straight through, with the icing cropped off, looked real.
+**Match the cut and the recipe, too.** For breads with layers, spirals or fillings, the crumb photo should be cut the same way step 2 cuts the bread: for rolls, a roll standing upright, cut straight down through the center, seen from the front. It should also contain only what the bread contains, with no icing, nuts, zest or other extras the user's bread doesn't have. Crop off toppings the bread does have too (sesame, seeds, sugar): Gemini copies their pattern and position from the photo. Crop off hands and fingers as well: Gemini may add them to the scene. In testing, a strip of sesame along the reference anpan's crust appeared on both cut halves. In testing, a blurry photo of a tipped-over cinnamon roll gave holes that were too large and a stringy texture. A sharp photo of an upright roll, cut straight through, with the icing cropped off, looked real.
 
 ## How to cut it
 
@@ -116,17 +116,17 @@ Open a **new Gemini chat** and send these one at a time. Download each image at 
 Edit the first image. Keep the bread's shape and crust, the board, cloth, wall, light and framing exactly the same, and add nothing new to the scene. <how to cut it, from "How to cut it" below> <for a filled bread: the filling sentence> Every cut piece keeps the same crust as the loaf, the same color and texture. The attached photo is a real photo of <bread> crumb, for texture reference only: make the cut faces match its crumb exactly — the same texture, softness, small irregularities and color. Do not copy anything else from it. <centering sentence, square only> Avoid: round crater-like holes, stringy or fibrous crumb, foam-like or cake-like crumb.
 ```
 
-**3. Cross-section — no background** → save, then remove the background (see below)
+**3. Cross-section — no background** → save as `<bread>-cross-section-white.png`
 ```
 Edit the image above. Keep the bread exactly the same — its shape, crust, crumb, color, size, and the light on it. Remove everything else: no board, table, cloth, knife, crumbs or wall. Place the bread alone on a plain, smooth, evenly lit pure white background. Same framing. <centering sentence, square only>
 ```
 
-**4. Whole bread — no background** (attach your saved `<bread>-whole.png`) → save, then remove the background
+**4. Whole bread — no background** (attach your saved `<bread>-whole.png`) → save as `<bread>-whole-white.png`
 ```
 Edit the attached image. Keep the bread exactly the same — its shape, crust, color, size, and the light on it. Remove everything else: no board, table, cloth, knife, crumbs or wall. Place the bread alone on a plain, smooth, evenly lit pure white background. Same framing. <centering sentence, square only>
 ```
 
-**Removing the white background:** in Finder, right-click the image → Quick Actions → Remove Background. It saves a transparent PNG next to it; name it `<bread>-...-cutout.png`.
+**Optional — transparent background:** Gemini can't make a real transparent image, so photos 3 and 4 come out on plain white. If you need a transparent PNG, remove the white yourself: in Finder, right-click the image → Quick Actions → Remove Background.
 ````
 
 After the steps, add one line: if any photo looks wrong, share it and say what's off.
@@ -137,7 +137,7 @@ These rules come from testing, so keep them:
 
 - **Gemini, not ChatGPT.** ChatGPT's cross-sections looked artificial even with a crumb photo; Gemini's looked real.
 - **One chat, whole bread first.** Editing one image keeps the loaf identical across all four photos. Photo 4 re-attaches photo 1 because the chat has moved on to the cross-section by then.
-- **White background, then remove it.** Asking Gemini for a "transparent background" gives a fake checkerboard drawn into the picture.
+- **A white background, not a transparent one.** Asking Gemini for a "transparent background" gives a fake checkerboard drawn into the picture, so photos 3 and 4 ask for plain white.
 - **"Size" in the keep sentence of steps 3 and 4.** Without it, removing the background sometimes made the bread bigger or smaller, so the no-background photos didn't match the café ones.
 - **Brightness words in the style text.** Without them, Gemini's café photos came out darker and moodier than this style. With "bright exposure, lifted soft shadows" they came out bright and airy.
 - **Warmth words in the scene and style text.** "Pale wood" and "clean white walls" once gave grey, weathered wood and a cold white wall, which felt cool rather than cozy. "Honey-toned pale oak", "warm white" and "gently warm morning daylight" keep the warmth without turning orange.

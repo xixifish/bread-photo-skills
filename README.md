@@ -1,15 +1,15 @@
-# Bread Photo Skill
+# Bread Photo Skills
 
 An AI skill that writes image prompts for **four matching photos of a bread**, in a calm, bright café style inspired by the Japanese film *Kamome Diner* (かもめ食堂) and the drama *Pan to Soup to Neko Biyori* (パンとスープとネコ日和): window light, a white plaster wall, pale wood, linen, and simple homemade bread.
 
 | Photo | Background |
 |---|---|
 | Whole bread | café table by a window |
-| Whole bread | none (transparent PNG) |
+| Whole bread | plain white |
 | Cross-section | the same café table |
-| Cross-section | none (transparent PNG) |
+| Cross-section | plain white |
 
-All four show the same loaf, so they fit together on a website: for example, the café photo on a product page and the transparent versions on a menu.
+All four show the same loaf, so they fit together on a website: for example, the café photo on a product page and the white-background versions on a menu.
 
 ## Example: anpan (Japanese sweet red bean buns)
 
@@ -26,7 +26,7 @@ Made with `/bread-photo:photo-set anpan` and Gemini.
   </tr>
 </table>
 
-The "no background" examples are shown on white. After the last step (Remove Background), they become transparent PNGs.
+The "no background" photos come out on a plain white background. If you need a transparent PNG, remove the white background yourself afterwards (see "Use", step 4).
 
 ## What you need
 
@@ -39,11 +39,11 @@ The "no background" examples are shown on white. After the last step (Remove Bac
 In a terminal:
 
 ```bash
-claude plugin marketplace add xixifish/bread-photo-skill
+claude plugin marketplace add xixifish/bread-photo-skills
 ```
 
 ```bash
-claude plugin install bread-photo@bread-photo-skill
+claude plugin install bread-photo@bread-photo-skills
 ```
 
 ## Use
@@ -56,7 +56,7 @@ claude plugin install bread-photo@bread-photo-skill
    ```
 
 3. Claude replies with four numbered steps. Open a **new Gemini chat** and send them one at a time, attaching the file each step names.
-4. For the two "no background" photos, Gemini gives you the bread on white. To make the background transparent on a Mac, right-click the image in Finder → **Quick Actions** → **Remove Background**.
+4. The two "no background" photos come out on plain white. **Optional:** if you need a transparent background, remove the white yourself. On a Mac, right-click the image in Finder → **Quick Actions** → **Remove Background**.
 
 You can also just ask in plain words, for example "make the photo set for my rye bread".
 
@@ -69,7 +69,7 @@ These rules came from testing, not guesswork:
 - **Gemini, not ChatGPT.** ChatGPT's cross-sections looked artificial even with a reference photo. Gemini's looked real.
 - **A real crumb photo.** Described in words alone, the inside of the bread came out looking like craters, cotton or foam, whatever the wording.
 - **One chat, whole bread first.** Each photo is an edit of an earlier one, so the loaf stays identical across all four.
-- **White first, transparent after.** Asking Gemini for a transparent background gives a fake checkerboard drawn into the picture.
+- **A white background, not a transparent one.** Asking Gemini for a transparent background gives a fake checkerboard drawn into the picture, so the skill asks for plain white instead.
 
 ## Limits
 

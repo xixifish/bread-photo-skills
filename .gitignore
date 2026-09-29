@@ -1,0 +1,5 @@
+# Private crumb reference photos (they may belong to other photographers)
+crumb-photos/
+
+# macOS
+.DS_Store

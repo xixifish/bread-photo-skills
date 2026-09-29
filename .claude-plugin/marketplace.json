@@ -1,0 +1,14 @@
+{
+  "name": "bread-photo-skill",
+  "description": "Skills for making consistent, natural-looking bread photos for café and bakery websites",
+  "owner": {
+    "name": "jc"
+  },
+  "plugins": [
+    {
+      "name": "bread-photo",
+      "source": "./plugins/bread-photo",
+      "description": "Four matching photos per bread — whole and cross-section, with and without background — in a calm Japanese–Nordic café style"
+    }
+  ]
+}

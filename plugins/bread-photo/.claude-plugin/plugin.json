@@ -1,0 +1,10 @@
+{
+  "name": "bread-photo",
+  "version": "0.1.0",
+  "description": "Four matching photos per bread — whole and cross-section, with and without background — in a calm Japanese–Nordic café style",
+  "author": {
+    "name": "jc"
+  },
+  "license": "MIT",
+  "keywords": ["bread", "bakery", "cafe", "food photography", "gemini", "image generation"]
+}
